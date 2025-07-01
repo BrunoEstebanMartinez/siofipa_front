@@ -193,936 +193,106 @@ import QuickLinks from 'components/app/support-desk/quick-links/QuickLinks';
 import Reports from 'components/app/support-desk/reports/Reports';
 import InputMaskExample from 'components/doc-components/InputMaskExample';
 import RangeSlider from 'components/doc-components/RangeSlider';
+import { path } from 'd3';
+
 
 const routes = [
   {
-    element: <App />,
+    path: rootPaths.root,
+    element: <CardLogin />,
     children: [
       {
-        path: 'landing',
-        element: <Landing />
+
       },
-      {
-        path: rootPaths.errorsRoot,
-        element: <ErrorLayout />,
-        children: [
-          {
-            path: paths.error404,
-            element: <Error404 />
-          },
-          {
-            path: paths.error500,
-            element: <Error500 />
-          }
-        ]
-      },
-      {
-        path: rootPaths.authRoot,
-        children: [
-          {
-            path: rootPaths.authSimpleRoot,
-            element: <AuthSimpleLayout />,
-            children: [
-              {
-                path: paths.simpleLogin,
-                element: <SimpleLogin />
-              },
-              {
-                path: paths.simpleRegister,
-                element: <SimpleRegistration />
-              },
-              {
-                path: paths.simpleLogout,
-                element: <SimpleLogout />
-              },
-              {
-                path: paths.simpleForgotPassword,
-                element: <SimpleForgetPassword />
-              },
-              {
-                path: paths.simpleResetPassword,
-                element: <SimplePasswordReset />
-              },
-              {
-                path: paths.simpleConfirmMail,
-                element: <SimpleConfirmMail />
-              },
-              {
-                path: paths.simpleLockScreen,
-                element: <SimpleLockScreen />
-              }
-            ]
-          },
-          {
-            path: rootPaths.authCardRoot,
-            children: [
-              {
-                path: paths.cardLogin,
-                element: <CardLogin />
-              },
-              {
-                path: paths.cardRegister,
-                element: <CardRegistration />
-              },
-              {
-                path: paths.cardLogout,
-                element: <CardLogout />
-              },
-              {
-                path: paths.cardForgotPassword,
-                element: <CardForgetPassword />
-              },
-              {
-                path: paths.cardResetPassword,
-                element: <CardPasswordReset />
-              },
-              {
-                path: paths.cardConfirmMail,
-                element: <CardConfirmMail />
-              },
-              {
-                path: paths.cardLockScreen,
-                element: <CardLockScreen />
-              }
-            ]
-          },
-          {
-            path: rootPaths.authSplitRoot,
-            children: [
-              {
-                path: paths.splitLogin,
-                element: <SplitLogin />
-              },
-              {
-                path: paths.splitRegister,
-                element: <SplitRegistration />
-              },
-              {
-                path: paths.splitLogout,
-                element: <SplitLogout />
-              },
-              {
-                path: paths.splitForgotPassword,
-                element: <SplitForgetPassword />
-              },
-              {
-                path: paths.splitResetPassword,
-                element: <SplitPasswordReset />
-              },
-              {
-                path: paths.splitConfirmMail,
-                element: <SplitConfirmMail />
-              },
-              {
-                path: paths.splitLockScreen,
-                element: <SplitLockScreen />
-              }
-            ]
-          },
-          {
-            path: paths.authWizard,
-            element: <WizardAuth />
-          }
-        ]
-      },
-      {
-        path: '/',
-        element: <MainLayout />,
-        children: [
-          {
-            index: true,
-            element: <Dashboard />
-          },
-          {
-            path: rootPaths.dashboardRoot,
-            children: [
-              {
-                path: paths.analytics,
-                element: <Analytics />
-              },
-              {
-                path: paths.crm,
-                element: <Crm />
-              },
-              {
-                path: paths.saas,
-                element: <Saas />
-              },
-              {
-                path: paths.ecommerce,
-                element: <Ecommerce />
-              },
-              {
-                path: paths.lms,
-                element: <Lms />
-              },
-              {
-                path: paths.projectManagement,
-                element: <ProjectManagement />
-              },
-              {
-                path: paths.supportDesk,
-                element: <SupportDesk />
-              }
-            ]
-          },
-          {
-            path: rootPaths.appsRoot,
-            children: [
-              {
-                path: paths.calendar,
-                element: <Calendar />
-              },
-              {
-                path: paths.chat,
-                element: <Chat />
-              },
-              {
-                path: paths.kanban,
-                element: <Kanban />
-              }
-            ]
-          },
-          {
-            path: rootPaths.emailRoot,
-            children: [
-              {
-                path: paths.emailInbox,
-                element: <Inbox />
-              },
-              {
-                path: paths.emailDetail,
-                element: <EmailDetail />
-              },
-              {
-                path: paths.emailCompose,
-                element: <Compose />
-              }
-            ]
-          },
-          {
-            path: rootPaths.eventsRoot,
-            children: [
-              {
-                path: paths.createEvent,
-                element: <CreateEvent />
-              },
-              {
-                path: paths.eventDetail,
-                element: <EventDetail />
-              },
-              {
-                path: paths.eventList,
-                element: <EventList />
-              }
-            ]
-          },
-          {
-            path: rootPaths.socialRoot,
-            children: [
-              {
-                path: paths.feed,
-                element: <Feed />
-              },
-              {
-                path: paths.activityLog,
-                element: <ActivityLog />
-              },
-              {
-                path: paths.notifications,
-                element: <Notifications />
-              },
-              {
-                path: paths.followers,
-                element: <Followers />
-              }
-            ]
-          },
-          {
-            path: rootPaths.eCommerceRoot,
-            children: [
-              {
-                path: paths.orderDetails,
-                element: <OrderDetails />
-              },
-              {
-                path: paths.orderList,
-                element: <Orders />
-              },
-              {
-                path: paths.customers,
-                element: <Customers />
-              },
-              {
-                path: paths.customerDetails,
-                element: <CustomersDetails />
-              },
-              {
-                path: paths.shoppingCart,
-                element: <ShoppingCart />
-              },
-              {
-                path: paths.checkout,
-                element: <Checkout />
-              },
-              {
-                path: paths.billing,
-                element: <Billing />
-              },
-              {
-                path: paths.invoice,
-                element: <Invoice />
-              },
-              {
-                path: paths.addProduct,
-                element: <AddProduct />
-              },
-              {
-                path: paths.products(':productLayout'),
-                element: <Products />
-              },
-              {
-                path: paths.productDetails(':productId'),
-                element: <ProductDetails />
-              },
-              {
-                path: paths.productDetails(),
-                element: <ProductDetails />
-              }
-            ]
-          },
-          {
-            path: rootPaths.eLearningRoot,
-            children: [
-              {
-                path: paths.courses(':courseLayout'),
-                element: <Courses />
-              },
-              {
-                path: paths.courseDetails(),
-                element: <CourseDetails />
-              },
-              {
-                path: paths.createCourse,
-                element: <CreateCourse />
-              },
-              {
-                path: paths.courseDetails(':courseId'),
-                element: <CourseDetails />
-              },
-              {
-                path: paths.studentOverview,
-                element: <StudentOverview />
-              },
-              {
-                path: paths.trainerProfile,
-                element: <TrainerProfile />
-              }
-            ]
-          },
-          {
-            path: rootPaths.supportDeskRoot,
-            children: [
-              {
-                path: paths.ticketsTable,
-                element: <TableView />
-              },
-              {
-                path: paths.ticketsCard,
-                element: <CardView />
-              },
-              {
-                path: paths.contacts,
-                element: <Contacts />
-              },
-              {
-                path: paths.contactDetails,
-                element: <ContactDetails />
-              },
-              {
-                path: paths.ticketsPreview,
-                element: <TicketsPreview />
-              },
-              {
-                path: paths.quickLinks,
-                element: <QuickLinks />
-              },
-              {
-                path: paths.reports,
-                element: <Reports />
-              }
-            ]
-          },
-          {
-            path: rootPaths.pagesRoot,
-            children: [
-              {
-                path: paths.starter,
-                element: <Starter />
-              }
-            ]
-          },
-          {
-            path: rootPaths.userRoot,
-            children: [
-              {
-                path: paths.userProfile,
-                element: <Profile />
-              },
-              {
-                path: paths.userSettings,
-                element: <Settings />
-              }
-            ]
-          },
-          {
-            path: rootPaths.pricingRoot,
-            children: [
-              {
-                path: paths.pricingDefault,
-                element: <PricingDefault />
-              },
-              {
-                path: paths.pricingAlt,
-                element: <PricingAlt />
-              }
-            ]
-          },
-          {
-            path: rootPaths.faqRoot,
-            children: [
-              {
-                path: paths.faqBasic,
-                element: <FaqBasic />
-              },
-              {
-                path: paths.faqAlt,
-                element: <FaqAlt />
-              },
-              {
-                path: paths.faqAccordion,
-                element: <FaqAccordion />
-              }
-            ]
-          },
-          {
-            path: rootPaths.miscRoot,
-            children: [
-              {
-                path: paths.associations,
-                element: <Associations />
-              },
-              {
-                path: paths.invitePeople,
-                element: <InvitePeople />
-              },
-              {
-                path: paths.privacyPolicy,
-                element: <PrivacyPolicy />
-              }
-            ]
-          },
-          {
-            path: rootPaths.formsRoot,
-            children: [
-              {
-                path: rootPaths.basicFormsRoot,
-                children: [
-                  {
-                    path: paths.formControl,
-                    element: <FormControl />
-                  },
-                  {
-                    path: paths.inputGroup,
-                    element: <InputGroup />
-                  },
-                  {
-                    path: paths.select,
-                    element: <Select />
-                  },
-                  {
-                    path: paths.checks,
-                    element: <Checks />
-                  },
-                  {
-                    path: paths.range,
-                    element: <Range />
-                  },
-                  {
-                    path: paths.formLayout,
-                    element: <FormLayout />
-                  }
-                ]
-              },
-              {
-                path: rootPaths.advanceFormsRoot,
-                children: [
-                  {
-                    path: paths.advanceSelect,
-                    element: <AdvanceSelect />
-                  },
-                  {
-                    path: paths.datePicker,
-                    element: <DatePicker />
-                  },
-                  {
-                    path: paths.editor,
-                    element: <Editor />
-                  },
-                  {
-                    path: paths.emojiButton,
-                    element: <EmojiMartExample />
-                  },
-                  {
-                    path: paths.fileUploader,
-                    element: <FileUploader />
-                  },
-                  {
-                    path: paths.inputMask,
-                    element: <InputMaskExample />
-                  },
-                  {
-                    path: paths.rangeSlider,
-                    element: <RangeSlider />
-                  },
-                  {
-                    path: paths.rating,
-                    element: <Rating />
-                  }
-                ]
-              },
-              {
-                path: paths.floatingLabels,
-                element: <FloatingLabels />
-              },
-              {
-                path: paths.wizard,
-                element: <WizardForms />
-              },
-              {
-                path: paths.validation,
-                element: <FormValidation />
-              }
-            ]
-          },
-          {
-            path: rootPaths.tableRoot,
-            children: [
-              {
-                path: paths.basicTables,
-                element: <Tables />
-              },
-              {
-                path: paths.advanceTables,
-                element: <AdvanceTableExamples />
-              }
-            ]
-          },
-          {
-            path: rootPaths.chartsRoot,
-            children: [
-              {
-                path: paths.chartjs,
-                element: <Chartjs />
-              },
-              {
-                path: paths.d3js,
-                element: <D3js />
-              },
-              {
-                path: rootPaths.echartsRoot,
-                children: [
-                  {
-                    path: paths.echartsHowToUse,
-                    element: <HowToUse />
-                  },
-                  {
-                    path: paths.lineCharts,
-                    element: <LineCharts />
-                  },
-                  {
-                    path: paths.barCharts,
-                    element: <BarCharts />
-                  },
-                  {
-                    path: paths.candlestickCharts,
-                    element: <CandlestickCharts />
-                  },
-                  {
-                    path: paths.geoMap,
-                    element: <GeoMaps />
-                  },
-                  {
-                    path: paths.scatterCharts,
-                    element: <ScatterCharts />
-                  },
-                  {
-                    path: paths.pieCharts,
-                    element: <PieCharts />
-                  },
-                  {
-                    path: paths.radarCharts,
-                    element: <RadarCharts />
-                  },
-                  {
-                    path: paths.heatmapCharts,
-                    element: <HeatmapCharts />
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            path: rootPaths.iconsRoot,
-            children: [
-              {
-                path: paths.fontAwesome,
-                element: <FontAwesome />
-              },
-              {
-                path: paths.reactIcons,
-                element: <ReactIcons />
-              }
-            ]
-          },
-          {
-            path: rootPaths.mapsRoot,
-            children: [
-              {
-                path: paths.googleMap,
-                element: <GoogleMapExample />
-              },
-              {
-                path: paths.leafletMap,
-                element: <LeafletMapExample />
-              }
-            ]
-          },
-          {
-            path: rootPaths.componentsRoot,
-            children: [
-              {
-                path: paths.alerts,
-                element: <Alerts />
-              },
-              {
-                path: paths.accordion,
-                element: <Accordion />
-              },
-              {
-                path: paths.animatedIcons,
-                element: <AnimatedIcons />
-              },
-              {
-                path: paths.background,
-                element: <Backgrounds />
-              },
-              {
-                path: paths.badges,
-                element: <Badges />
-              },
-              {
-                path: paths.breadcrumbs,
-                element: <Breadcrumbs />
-              },
-              {
-                path: paths.buttons,
-                element: <Buttons />
-              },
-              {
-                path: paths.calendarExample,
-                element: <CalendarExample />
-              },
-              {
-                path: paths.cards,
-                element: <Cards />
-              },
-              {
-                path: paths.cards,
-                element: <Cards />
-              },
-              {
-                path: rootPaths.carouselRoot,
-                children: [
-                  {
-                    path: paths.bootstrapCarousel,
-                    element: <BootstrapCarousel />
-                  },
-                  {
-                    path: paths.slickCarousel,
-                    element: <SlickCarousel />
-                  }
-                ]
-              },
-              {
-                path: paths.collapse,
-                element: <Collapse />
-              },
-              {
-                path: paths.cookieNotice,
-                element: <CookieNoticeExample />
-              },
-              {
-                path: paths.countup,
-                element: <CountUp />
-              },
-              {
-                path: paths.draggable,
-                element: <DraggableExample />
-              },
-              {
-                path: paths.dropdowns,
-                element: <Dropdowns />
-              },
-              {
-                path: paths.listGroup,
-                element: <ListGroups />
-              },
-              {
-                path: paths.modals,
-                element: <Modals />
-              },
-              {
-                path: paths.offcanvas,
-                element: <Offcanvas />
-              },
-              {
-                path: rootPaths.navsAndTabsRoot,
-                children: [
-                  {
-                    path: paths.navs,
-                    element: <Navs />
-                  },
-                  {
-                    path: paths.navbar,
-                    element: <Navbars />
-                  },
-                  {
-                    path: paths.verticalNavbar,
-                    element: <VerticalNavbar />
-                  },
-                  {
-                    path: paths.topNavbar,
-                    element: <NavBarTop />
-                  },
-                  {
-                    path: paths.doubleTopNavbar,
-                    element: <NavbarDoubleTop />
-                  },
-                  {
-                    path: paths.comboNavbar,
-                    element: <ComboNavbar />
-                  },
-                  {
-                    path: paths.tabs,
-                    element: <Tabs />
-                  }
-                ]
-              },
-              {
-                path: rootPaths.picturesRoot,
-                children: [
-                  {
-                    path: paths.avatar,
-                    element: <Avatar />
-                  },
-                  {
-                    path: paths.images,
-                    element: <Image />
-                  },
-                  {
-                    path: paths.figures,
-                    element: <Figures />
-                  },
-                  {
-                    path: paths.hoverbox,
-                    element: <Hoverbox />
-                  },
-                  {
-                    path: paths.lightbox,
-                    element: <Lightbox />
-                  }
-                ]
-              },
-              {
-                path: paths.progressBar,
-                element: <BasicProgressBar />
-              },
-              {
-                path: paths.pagination,
-                element: <Pagination />
-              },
-              {
-                path: paths.placeholder,
-                element: <Placeholder />
-              },
-              {
-                path: paths.popovers,
-                element: <Popovers />
-              },
-              {
-                path: paths.scrollspy,
-                element: <Scrollspy />
-              },
-              {
-                path: paths.search,
-                element: <Search />
-              },
-              {
-                path: paths.spinners,
-                element: <Spinners />
-              },
-              {
-                path: paths.timeline,
-                element: <Timeline />
-              },
-              {
-                path: paths.toasts,
-                element: <Toasts />
-              },
-              {
-                path: paths.tooltips,
-                element: <Tooltips />
-              },
-              {
-                path: paths.treeview,
-                element: <TreeviewExample />
-              },
-              {
-                path: paths.typedText,
-                element: <TypedText />
-              },
-              {
-                path: rootPaths.videosRoot,
-                children: [
-                  {
-                    path: paths.embedVideo,
-                    element: <Embed />
-                  },
-                  {
-                    path: paths.reactPlayer,
-                    element: <ReactPlayerExample />
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            path: rootPaths.utilitiesRoot,
-            children: [
-              {
-                path: paths.backgroundColor,
-                element: <Background />
-              },
-              {
-                path: paths.borders,
-                element: <Borders />
-              },
-              {
-                path: paths.colors,
-                element: <Colors />
-              },
-              {
-                path: paths.coloredLinks,
-                element: <ColoredLinks />
-              },
-              {
-                path: paths.display,
-                element: <Display />
-              },
-              {
-                path: paths.flex,
-                element: <Flex />
-              },
-              {
-                path: paths.float,
-                element: <Float />
-              },
-              {
-                path: paths.grid,
-                element: <Grid />
-              },
-              {
-                path: paths.scrollBar,
-                element: <Scrollbar />
-              },
-              {
-                path: paths.position,
-                element: <Position />
-              },
-              {
-                path: paths.spacing,
-                element: <Spacing />
-              },
-              {
-                path: paths.sizing,
-                element: <Sizing />
-              },
-              {
-                path: paths.stretchedLink,
-                element: <StretchedLink />
-              },
-              {
-                path: paths.textTruncation,
-                element: <TextTruncation />
-              },
-              {
-                path: paths.typography,
-                element: <Typography />
-              },
-              {
-                path: paths.verticalAlign,
-                element: <VerticalAlign />
-              },
-              {
-                path: paths.visibility,
-                element: <Visibility />
-              }
-            ]
-          },
-          {
-            path: rootPaths.docRoot,
-            children: [
-              {
-                path: paths.gettingStarted,
-                element: <GettingStarted />
-              },
-              {
-                path: paths.configuration,
-                element: <Configuration />
-              },
-              {
-                path: paths.styling,
-                element: <Styling />
-              },
-              {
-                path: paths.darkMode,
-                element: <DarkMode />
-              },
-              {
-                path: paths.plugin,
-                element: <Plugins />
-              },
-              {
-                path: paths.faq,
-                element: <Faq />
-              },
-              {
-                path: paths.designFile,
-                element: <DesignFile />
-              }
-            ]
-          },
-          {
-            path: paths.widgets,
-            element: <Widgets />
-          },
-          {
-            path: paths.changelog,
-            element: <Changelog />
-          }
-        ]
-      },
+      // {
+      //   // rutas para autenticación
+      //   // ruta padre 
+      //   path: rootPaths.authRoot,
+      //   // conjunto de rutas hijas que componen la ruta padre de autenticación
+      //   children: [
+      //     {
+      //       path: rootPaths.authCardRoot,
+      //       children: [
+      //         {
+      //           path: paths.cardLogin,
+      //           element: <CardLogin />
+      //         },
+      //         {
+      //           path: paths.cardRegister,
+      //           element: <CardRegistration />
+      //         },
+      //         {
+      //           path: paths.cardLogout,
+      //           element: <CardLogout />
+      //         },
+      //         {
+      //           path: paths.cardForgotPassword,
+      //           element: <CardForgetPassword />
+      //         },
+      //         {
+      //           path: paths.cardResetPassword,
+      //           element: <CardPasswordReset />
+      //         },
+      //         {
+      //           path: paths.cardConfirmMail,
+      //           element: <CardConfirmMail />
+      //         },
+      //         {
+      //           path: paths.cardLockScreen,
+      //           element: <CardLockScreen />
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       path: paths.authWizard,
+      //       element: <WizardAuth />
+      //     }
+      //   ]
+      // },
+      // {
+      //   //root path
+      //   path: '/inicio',
+      //   element: <MainLayout />,
+      //   children: [
+      //     {
+      //       index: false,
+      //       element: <Dashboard />
+      //     },
+      //     {
+      //       path: rootPaths.dashboardRoot,
+      //       children: [
+      //         {
+      //           path: paths.analytics,
+      //           element: <Analytics />
+      //         },
+      //         {
+      //           path: paths.crm,
+      //           element: <Crm />
+      //         },
+      //         {
+      //           path: paths.saas,
+      //           element: <Saas />
+      //         },
+      //         {
+      //           path: paths.ecommerce,
+      //           element: <Ecommerce />
+      //         },
+      //         {
+      //           path: paths.lms,
+      //           element: <Lms />
+      //         },
+      //         {
+      //           path: paths.projectManagement,
+      //           element: <ProjectManagement />
+      //         },
+      //         {
+      //           path: paths.supportDesk,
+      //           element: <SupportDesk />
+      //         }
+      //       ]
+      //     },
+      //   ]
+      // },
       {
         path: '*',
         element: <Navigate to={paths.error404} replace />

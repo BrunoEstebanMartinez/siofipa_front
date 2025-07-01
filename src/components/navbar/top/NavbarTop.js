@@ -53,8 +53,8 @@ const NavbarTop = () => {
       })}
       expand={
         navbarPosition === 'top' ||
-        navbarPosition === 'combo' ||
-        navbarPosition === 'double-top'
+          navbarPosition === 'combo' ||
+          navbarPosition === 'double-top'
           ? topNavbarBreakpoint
           : true
       }
@@ -72,7 +72,7 @@ const NavbarTop = () => {
           <hr className="my-2 d-none d-lg-block" />
           <Navbar.Collapse in={navbarCollapsed} className="scrollbar py-2">
             <Nav navbar>
-              <NavbarTopDropDownMenus />
+              {/* <NavbarTopDropDownMenus /> */}
             </Nav>
           </Navbar.Collapse>
         </div>
@@ -125,7 +125,7 @@ const NavbarTopElements = ({
           className="scrollbar pb-3 pb-lg-0"
         >
           <Nav navbar>
-            <NavbarTopDropDownMenus />
+            {/* <NavbarTopDropDownMenus /> */}
           </Nav>
         </Navbar.Collapse>
       ) : (

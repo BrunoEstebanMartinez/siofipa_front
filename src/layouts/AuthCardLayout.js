@@ -9,32 +9,31 @@ import Section from 'components/common/Section';
 import bgShape from 'assets/img/illustrations/bg-shape.png';
 import shape1 from 'assets/img/illustrations/shape-1.png';
 import halfCircle from 'assets/img/illustrations/half-circle.png';
+import fondo from 'assets/img/fondo.jpg'
+
+
+
+const styleGob = {
+  backgroundImage: 'url(' + fondo + ')',
+  backgroundReapet: 'no-repeat',
+  backgroundSize: 'cover'
+
+}
 
 const AuthCardLayout = ({ leftSideContent, children, footer = true }) => {
   return (
     <Section fluid className="py-0">
-      <Row className="g-0 min-vh-100 flex-center">
-        <Col lg={8} xxl={5} className="py-3 position-relative">
-          <img
-            className="bg-auth-circle-shape"
-            src={bgShape}
-            alt=""
-            width="250"
-          />
-          <img
-            className="bg-auth-circle-shape-2"
-            src={shape1}
-            alt=""
-            width="150"
-          />
+      {/* Gutters: especiado entre columnas: se elimina la propiedad g-0, para conservar el espaciado por default */}
+      <Row className="min-vh-100 flex-center" style={styleGob}>
+        <Col lg={8} xxl={5} className="">
           <Card className="overflow-hidden z-1">
             <Card.Body className="p-0">
               <Row className="h-100 g-0">
                 <Col md={5} className="text-white text-center bg-card-gradient">
                   <div className="position-relative p-4 pt-md-5 pb-md-7">
-                    <Background
+                    <div
                       image={halfCircle}
-                      className="bg-auth-card-shape"
+                      className="bg-auth-card-shape bg-[#D7C2A0]"
                     />
                     <div
                       className="z-1 position-relative"
@@ -44,12 +43,10 @@ const AuthCardLayout = ({ leftSideContent, children, footer = true }) => {
                         className="link-light mb-4 font-sans-serif fw-bolder fs-5 d-inline-block"
                         to="/"
                       >
-                        falcon
+                        Secretaría de Bienestar
                       </Link>
                       <p className="opacity-75 text-white">
-                        With the power of Falcon, you can now focus only on
-                        functionaries for your digital products, while leaving
-                        the UI design on us!
+                        Bienvenido al Sistema de Oficialía de Partes
                       </p>
                     </div>
                   </div>
